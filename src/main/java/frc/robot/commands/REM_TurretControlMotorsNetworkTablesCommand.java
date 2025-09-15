@@ -6,16 +6,16 @@ import edu.wpi.first.networktables.NetworkTableInstance;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
-import frc.robot.subsystems.TurretSubsytem;
+import frc.robot.subsystems.TurretSubsystem;
 
-public class TurretControlMotorsNetworkTablesCommand extends Command{
-    private final TurretSubsytem m_turretSubsytem;
+public class REM_TurretControlMotorsNetworkTablesCommand extends Command{
+    private final TurretSubsystem m_turretSubsytem;
     private NetworkTableInstance m_networkTable;
     private NetworkTable m_turretNetworkTable;
     private NetworkTableEntry m_xValueNetworkTableEntry;
     private NetworkTableEntry m_yValueNetworkTableEntry;
 
-    public TurretControlMotorsNetworkTablesCommand(TurretSubsytem turretSubsytem) {
+    public REM_TurretControlMotorsNetworkTablesCommand(TurretSubsystem turretSubsytem) {
         m_networkTable = NetworkTableInstance.getDefault();
         m_turretNetworkTable = m_networkTable.getTable("turret");
         m_xValueNetworkTableEntry = m_turretNetworkTable.getEntry("joystickX");

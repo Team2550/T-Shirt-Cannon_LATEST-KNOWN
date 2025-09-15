@@ -1,22 +1,23 @@
 package frc.robot.commands.Cannons;
 
-import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.Command;
+import edu.wpi.first.wpilibj2.command.Commands;
+import frc.robot.Constants;
 import frc.robot.subsystems.CannonManagerSubsystem;
 
 public class CannonShootCommand extends Command{
     private final CannonManagerSubsystem m_CannonManagerSubsystem;
-    private final XboxController m_XboxController;
 
-    public CannonShootCommand(CannonManagerSubsystem shooterSystem, XboxController xboxController) {
+    public CannonShootCommand(CannonManagerSubsystem shooterSystem) {
         m_CannonManagerSubsystem = shooterSystem;
-        m_XboxController = xboxController;
         addRequirements(m_CannonManagerSubsystem);
     }
     
     @Override
     public void execute() {
-        while(!m_XboxController.getRightBumperPressed()){}
-        m_CannonManagerSubsystem.cycleAndShoot();
+        Commands.run(m_CannonManagerSubsystem::cycleAndShoot, m_CannonManagerSubsystem)
+                .andThen(Commands.waitSeconds(Constants.CannonConstants.WaitTime))
+                .andThen(Commands.run(m_CannonManagerSubsystem::launchFinish, m_CannonManagerSubsystem))
+                .andThen(Commands.waitSeconds(0.5));
     }
 }

@@ -27,18 +27,9 @@ public final class Constants {
     public static final double maximumAgeOfNetworkTableEntry = 0.01;
   }
 
-  public static class cannonConstants {
-    public static enum statusStates{ //Using an enum because it improves readability. 
-      READYTOSHOOT, 
-      SHOOTING, 
-      EMPTY
-    }
-    
-    public static final double waitTime = 0.25; //The time to keep the solenoid open in seconds
-    public static final int numberOfShooters = 6;
-    public static final int[] cannonPorts = {1, 2, 3, 4, 5, 6};
-    public static final boolean[] loadedBarrels = {true, true, true, 
-                                                 true, true, true};
+  public static class CannonConstants {  
+    public static final double WaitTime = 0.25; //The time to keep the solenoid open in seconds
+    public static final int NumberOfShooters = 6;
   }
 
   
